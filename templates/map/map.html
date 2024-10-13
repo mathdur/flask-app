@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+{% block title %}{{ super() }} - Site Map{% endblock %}
+
+
+{% block nav %}
+    <div class="cell shrink">
+        <img id="uga_png" src="{{ url_for('static', filename='images/uga.png') }}">
+    </div>
+    <div class="cell auto list_nav">
+        <h5 id="nom_prenom">{{ user_co.prenom }} {{ user_co.nom }}</h5>
+
+        {% for page in nav %}
+            <a class="nav" href="/{{ page }}"><img src="{{ url_for('static', filename='images/'+page+'.svg') }}"
+                                                           alt="" width="23">{{ page }}
+            </a>
+        {% endfor %}
+    </div>
+
+    <a href="/logout" id="logout"><img src="{{ url_for('static', filename='images/logout.svg') }}" alt="" width="25">Déconnexion</a>
+
+{% endblock %}
+
+
+
+{% block main %}
+    <div style="margin-left: 50px">
+        <h1>Plan des routes</h1>
+        <table style="font-size: 80%">
+            <thead>
+            <tr>
+                <th>Route</th>
+                <th>endpoint</th>
+                <th>Méthode(s)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {%- for link in links | sort(attribute='endpoint') %}
+                <tr>
+                    <td>
+                        {% if link.url -%}
+                            <a href="{{ link.url }}">{{ link.route }}</a>
+                        {%- else -%}
+                            {{ link.route }}
+                        {%- endif %}
+                    </td>
+                    {%- set ep = link.endpoint.split('.') %}
+                    <td><code title="fonction {{ ep[0]+'()' if ep | length == 1 else ep[1]+'()' }}{{ ', Blueprint "'+ep[0]+'"' if ep | length == 2 }}">{{ link.endpoint }}</code></td>
+                    <td>{{ link.methods }}</td>
+                </tr>
+            {%- endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

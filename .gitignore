@@ -1,0 +1,7 @@
+/.idea/
+/venv/
+__pycache__/
+flask_session/
+*.db
+*.xlsx
+*.csv

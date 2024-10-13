@@ -1,0 +1,381 @@
+/* bleu */
+
+#titre {
+    margin: 0;
+    display: flex;
+}
+
+#login {
+    position: absolute;
+    right: 0;
+    width: 90px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+/* gris */
+
+#uga_png {
+    width: 150px;
+    margin-left: 24px;
+}
+
+
+
+#logout {
+    margin-left: 35px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: black;
+    position: absolute;
+    bottom: 0;
+}
+
+#logout img {
+    margin-right: 15px;
+}
+
+#logout:hover {
+    font-size: 20.5px;
+    margin-left: 33px;
+}
+
+#nom_prenom {
+    margin-left: 50px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    font-size: 20px;
+}
+
+.list_nav {
+    display: contents;
+}
+
+.nav {
+    font-size: 18px;
+    color: black;
+}
+
+.nav img {
+    margin-right: 15px;
+    margin-left: 30px;
+}
+
+.nav {
+    padding: 15px;
+}
+
+.uga {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+/* Page de connection */
+
+#list-div {
+    display: flex;
+    margin-top: 6%;
+}
+
+#connection {
+    background-color: beige;
+    width: 450px;
+    height: 470px;
+    margin-left: auto;
+
+}
+
+#connection div {
+    margin-top: 40px;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-bottom: 40px;
+}
+
+#connection legend {
+    font-family: "Assistant", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 36px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#connection label {
+    font-size: 16px;
+}
+
+#connection button {
+    right: 0;
+}
+
+#a {
+    background-color: beige;
+    width: 350px;
+    height: 470px;
+    margin-right: auto;
+    border-left: 2px solid black;
+}
+
+
+
+
+
+
+#selection-bbd {
+    background-color: #cee5e5;
+    width: 350px;
+    height: 470px;
+    margin-left: auto;
+    border: 1px solid black;
+    margin-right: 50px;
+}
+#selection-bbd div {
+    margin-top: 45px;
+    margin-left: 40px;
+    margin-right: 70px;
+    margin-bottom: 40px;
+}
+
+#selection-bbd h4 {
+    font-size: 30px;
+    margin-bottom: 35px;
+}
+
+#selection-bbd label {
+    font-size: 17px;
+}
+
+#bdd {
+    background-color: #cee5e5;
+    width: 450px;
+    margin-right: auto;
+    border: 1px solid black;
+    max-height: 470px;
+    overflow-y: auto;
+}
+
+#bdd a {
+    display: block;
+    padding: 5px;
+    color: black;
+    font-size: 18px;
+}
+
+#bdd a:hover {
+    background-color: #b2b2b2;
+    padding: 6px;
+}
+
+.info {
+    border: 2px solid black;
+    padding: 5px;
+}
+
+
+
+#main {
+    margin-left: 30px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#list-div-perso {
+    display: flex;
+    margin-top: 3%;
+}
+
+#donnee-perso {
+    background-color: beige;
+    width: 750px;
+    height: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#donnee-perso div {
+    margin-top: 30px;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-bottom: 40px;
+}
+
+#donnee-perso legend {
+    font-family: "Assistant", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 36px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#donnee-perso label {
+    font-size: 16px;
+}
+
+#donnee-perso button {
+    right: 0;
+}
+
+#service-perso {
+    background-color: beige;
+    width: 350px;
+    height: 650px;
+    margin-right: auto;
+    border-left: 2px solid black;
+}
+
+#verif {
+    color: #ce6969;
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* administratif_update */
+
+
+#list-div-modif {
+    display: flex;
+    margin-top: 3%;
+}
+
+#donnee-modif {
+    background-color: beige;
+    width: 1000px;
+    height: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#donnee-modif div {
+    margin-top: 30px;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-bottom: 40px;
+}
+
+#donnee-modif legend {
+    font-family: "Assistant", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 36px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#donnee-modif label {
+    font-size: 16px;
+}
+
+#donnee-modif button {
+    right: 0;
+}
+
+#service-modif {
+    background-color: beige;
+    width: 350px;
+    height: 650px;
+    margin-right: auto;
+    border-left: 2px solid black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#add-user {
+    position: absolute;
+    right: 0;
+    font-size: 18px;
+    margin-right: 30px;
+}
+
+
+
+
+.actions {
+    display: none;
+    margin-right: 30px;
+    width: 120px;
+    height: 70px;
+    position: absolute;
+    background-color: #dedede;
+    right: 0;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.actions  .editer{
+    margin-top: 10px;
+    padding: 2px;
+}
+
+.actions  .supprimer{
+    margin-top: 3px;
+    padding: 2px;
+}
+
+.actions div:hover {
+    color: #5bbdfc;
+}
+
+.add_user:hover {
+    background-color: #3177cb;
+    border-radius: 6px;
+}
+
+.info_bleu:hover {
+    color: dodgerblue;
+    opacity: 1;
+}
+
+.profil-uga {
+    display: none;
+}

@@ -1,0 +1,623 @@
+{% extends 'layout.html' %}
+{% block title %}{{ super() }} - Index{% endblock %}
+
+
+{% block nav %}
+    <div class="cell shrink">
+        <img id="uga_png" src="{{ url_for('static', filename='images/uga.png') }}" alt="logo UGA">
+    </div>
+    <div class="cell auto list_nav">
+        <h5 id="nom_prenom">{{ user_co.prenom }} {{ user_co.nom }}</h5>
+
+        {% for page in nav %}
+            <a class="nav" href="/{{ page }}"><img src="{{ url_for('static', filename='images/'+page+'.svg') }}"
+                                                           alt="" width="23">{{ page }}
+            </a>
+        {% endfor %}
+    </div>
+
+    <a href="/logout" id="logout"><img src="{{ url_for('static', filename='images/logout.svg') }}" alt="Déconnexion" width="25">Déconnexion</a>
+
+{% endblock %}
+
+{% block main %}
+    <!--begin::App-->
+    <div class="d-flex flex-column flex-root app-root" id="kt_app_root" style="margin-top: 10px;margin-left: 50px">
+
+        <!--begin::Wrapper-->
+        <div class="app-wrapper  flex-column flex-row-fluid " id="kt_app_wrapper">
+
+            <!--begin::Toolbar-->
+            <div id="kt_app_toolbar" class="app-toolbar ">
+
+                <!--begin::Toolbar container-->
+                <div id="kt_app_toolbar_container"
+                     class="app-container  container-fluid d-flex flex-lg-column py-3 py-lg-6 ">
+
+
+                    <!--begin::Page title-->
+                    <div class="page-title d-flex align-items-center gap-1 me-3" data-kt-swapper="true"
+                         data-kt-swapper-mode="{default: 'prepend', lg: 'prepend'}"
+                         data-kt-swapper-parent="{default: '#kt_app_content_container', lg: '#kt_app_header_wrapper'}">
+                        <!--begin::Title-->
+                        <span class="text-gray-900 fw-bolder fs-2x">
+                                Details Utilisateur
+                            </span>
+                        <!--end::Title-->
+
+
+                        <!--begin::Breadcrumb-->
+                        <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-base ms-3">
+
+
+                            <!--begin::Item-->
+                            <li class="breadcrumb-item text-gray-700 fw-bold lh-1">
+                                <a href="/Compte" class="text-gray-700 text-hover-primary">
+                                    <i class="ki-duotone ki-home fs-3 text-gray-400 ms-2"></i>
+                                </a>
+                            </li>
+                            <!--end::Item-->
+
+                            <!--begin::Item-->
+                            <li class="breadcrumb-item">
+                                <i class="ki-duotone ki-right fs-4 text-gray-700 mx-n2"></i>
+                            </li>
+                            <!--end::Item-->
+
+
+                            <!--begin::Item-->
+                            <li class="breadcrumb-item text-gray-700 fw-bold lh-1">
+                                Administratif
+                            </li>
+                            <!--end::Item-->
+
+                            <!--begin::Item-->
+                            <li class="breadcrumb-item">
+                                <i class="ki-duotone ki-right fs-4 text-gray-700 mx-n2"></i>
+                            </li>
+                            <!--end::Item-->
+
+
+                            <!--begin::Item-->
+                            <li class="breadcrumb-item text-gray-700 fw-bold lh-1">
+                                <a href="/Administratif">Utilisateurs</a>
+                            </li>
+                            <!--end::Item-->
+
+                            <!--begin::Item-->
+                            <li class="breadcrumb-item">
+                                <i class="ki-duotone ki-right fs-4 text-gray-700 mx-n2"></i>
+                            </li>
+                            <!--end::Item-->
+
+
+                            <!--begin::Item-->
+                            <li class="breadcrumb-item text-gray-500 text-ki">
+                                Editer
+                            </li>
+                            <!--end::Item-->
+
+
+                        </ul>
+                        <!--end::Breadcrumb-->
+                    </div>
+                    <!--end::Page title-->
+                </div>
+                <!--end::Toolbar container-->
+            </div>
+            <!--end::Toolbar-->
+
+
+            <!--begin::Main-->
+            <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+                <!--begin::Content wrapper-->
+                <div class="d-flex flex-column flex-column-fluid">
+
+
+                    <!--begin::Content-->
+                    <div id="kt_app_content" class="app-content  flex-column-fluid ">
+                        <!--begin::Content container-->
+                        <div id="kt_app_content_container" class="app-container  container-fluid ">
+                            <!--begin::Layout-->
+                            <div class="d-flex flex-column flex-lg-row">
+                                <!--begin::Sidebar-->
+                                <div class="flex-column flex-lg-row-auto w-lg-250px w-xl-350px mb-10">
+
+                                    <!--begin::Card-->
+                                    <div class="card mb-5 mb-xl-8">
+                                        <!--begin::Card body-->
+                                        <div class="card-body">
+                                            <!--begin::Summary-->
+
+
+                                            <!--begin::User Info-->
+                                            <div class="d-flex flex-center flex-column py-5">
+                                                <!--begin::Avatar-->
+                                                <div class="symbol symbol-100px symbol-circle mb-7">
+                                                    <img src="{{ url_for('static', filename='images/user-icon.jpg') }}"
+                                                         alt="utilisateur">
+                                                </div>
+                                                <!--end::Avatar-->
+
+                                                <!--begin::Name-->
+                                                <div
+                                                   class="fs-3 text-gray-800 text-hover-primary fw-bold mb-3">
+                                                    {{ user.prenom }} {{ user.nom }}</div>
+                                                <!--end::Name-->
+
+                                                <!--begin::Position-->
+                                                <div class="mb-9">
+                                                    <!--begin::Badge-->
+                                                    <div class="badge badge-lg badge-light-primary d-inline">
+                                                        {{ user_co.role }}
+                                                    </div>
+                                                    <!--begin::Badge-->
+                                                </div>
+                                                <!--end::Position-->
+
+                                                <!--begin::Info-->
+                                                <!--begin::Info heading-->
+                                                <div class="fw-bold mb-3">
+                                                    Informations
+
+
+                                                </div>
+                                                <!--end::Info heading-->
+
+                                                <div class="d-flex flex-wrap flex-center">
+                                                    <!--begin::Stats-->
+                                                    <div
+                                                            class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
+                                                        <div class="fs-4 fw-bold text-gray-700">
+                                                            <span class="w-75px">{{ user_nbr.nbrposte }}</span>
+                                                            <i class="ki-duotone ki-poste fs-3 text-success"
+                                                               style="margin-left: 2px"><i
+                                                                    class="path1"></i></i>
+                                                        </div>
+                                                        <div class="fw-semibold text-muted">Poste</div>
+                                                    </div>
+                                                    <!--end::Stats-->
+                                                    {% for user in user_info %}
+                                                        <!--begin::Stats-->
+                                                        <div
+                                                                class="border border-gray-300 border-dashed rounded py-3 px-3 mx-4 mb-3">
+                                                            <div class="fs-4 fw-bold text-gray-700">
+                                                                <span class="w-50px">{{ user.tempstravail }} %</span>
+                                                                <i class="ki-duotone ki-work-time2 fs-3 text-danger"><i
+                                                                        class="path1"></i></i>
+                                                            </div>
+                                                            <div class="fw-semibold text-muted">{{ user.poste }}</div>
+                                                        </div>
+                                                        <!--end::Stats-->
+                                                    {% endfor %}
+
+                                                    <!--end::Stats-->
+                                                </div>
+                                                <!--end::Info-->
+                                            </div>
+                                            <!--end::User Info--> <!--end::Summary-->
+
+                                            <!--begin::Details toggle-->
+                                            <div class="d-flex flex-stack fs-4 py-3">
+                                                <div class="fw-bold rotate collapsible">Details
+                                                </div>
+
+                                            </div>
+                                            <!--end::Details toggle-->
+
+                                            <div class="separator"></div>
+
+                                            <!--begin::Details content-->
+                                            <div id="kt_user_view_details" class="collapse show">
+                                                <div class="pb-5 fs-6">
+                                                    <!--begin::Details item-->
+                                                    <div class="fw-bold mt-5">Numéro de sécu</div>
+                                                    <div class="text-gray-600">{{ user.secu }}</div>
+                                                    <!--begin::Details item-->
+                                                    <!--begin::Details item-->
+                                                    <div class="fw-bold mt-5">Email</div>
+                                                    <div class="text-gray-600"><div class="text-gray-600 text-hover-primary">{{ user.email_perso }}</div>
+                                                    </div>
+                                                    <!--begin::Details item-->
+                                                    <!--begin::Details item-->
+                                                    <div class="fw-bold mt-5">Adresse</div>
+                                                    <div class="text-gray-600">{{ user.adresse_perso }}
+                                                    </div>
+                                                    <!--begin::Details item-->
+                                                    <!--begin::Details item-->
+                                                    <div class="fw-bold mt-5">Poste</div>
+                                                    <div class="text-gray-600">{{ user_nbr.nbrposte }}</div>
+                                                    <!--begin::Details item-->
+                                                    {% for user in user_info %}
+                                                        <!--begin::Details item-->
+                                                        <div class="fw-bold mt-5">{{ user.poste }}</div>
+                                                        <div class="text-gray-600">{{ user.tempstravail }} %</div>
+                                                        <!--begin::Details item-->
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                            <!--end::Details content-->
+                                        </div>
+                                        <!--end::Card body-->
+                                    </div>
+                                    <!--end::Card-->
+                                </div>
+
+                                <!--begin::Content-->
+                                <div class="flex-lg-row-fluid ms-lg-15">
+                                    <!--begin:::Tabs-->
+                                    <ul
+                                            class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-8">
+                                        <!--begin:::Tab item-->
+                                        <li class="nav-item">
+                                            <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab"
+                                               id="profil"
+                                               onclick="profil()">Profil</a>
+                                        </li>
+                                        <!--end:::Tab item-->
+
+                                        <!--begin:::Tab item-->
+                                        <li class="nav-item">
+                                            <a class="nav-link text-active-primary pb-4"
+                                               data-bs-toggle="tab" id="profil-uga"
+                                               onclick="profil_uga()">Info UGA</a>
+                                        </li>
+                                    </ul>
+                                    <!--end:::Tabs-->
+
+                                    <!--begin:::Tab content-->
+                                    <div class="tab-content profil" id="myTabContent">
+                                        <!--begin:::Tab pane-->
+                                        <div class="tab-pane fade show active" role="tabpanel">
+                                            <!--end::Navbar-->
+                                            <!--begin::Basic info-->
+                                            <div class="card mb-5 mb-xl-10">
+                                                <!--begin::Card header-->
+                                                <div class="card-header border-0 cursor-pointer">
+                                                    <!--begin::Card title-->
+                                                    <div class="card-title m-0">
+                                                        <h3 class="fw-bold m-0">Details du Profil</h3>
+                                                    </div>
+                                                    <!--end::Card title-->
+                                                </div>
+                                                <!--begin::Card header-->
+
+                                                <!--begin::Content-->
+                                                <div id="kt_account_settings_profile_details" class="collapse show">
+                                                    <!--begin::Form-->
+                                                    <form method="POST" class="form">
+                                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                                        <!--begin::Card body-->
+                                                        <div class="card-body border-top p-9">
+                                                            <!--begin::Input group-->
+                                                            <div class="row mb-6">
+
+
+                                                                <!--end::Input group-->
+
+                                                                <!--begin::Input group-->
+                                                                <div class="row mb-6">
+                                                                    <!--begin::Label-->
+                                                                    <label
+                                                                            class="col-lg-4 col-form-label fw-semibold fs-6">Prenom
+                                                                        Nom</label>
+                                                                    <!--end::Label-->
+
+                                                                    <!--begin::Col-->
+                                                                    <div class="col-lg-8">
+                                                                        <!--begin::Row-->
+                                                                        <div class="row">
+                                                                            <!--begin::Col-->
+                                                                            <div class="col-lg-6 fv-row">
+                                                                                <input type="text" name="prenom"
+                                                                                       class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                                                                                       value="{{ user.prenom }}">
+                                                                            </div>
+                                                                            <!--end::Col-->
+
+                                                                            <!--begin::Col-->
+                                                                            <div class="col-lg-6 fv-row">
+                                                                                <input type="text" name="nom"
+                                                                                       class="form-control form-control-lg form-control-solid"
+                                                                                       value="{{ user.nom }}">
+                                                                            </div>
+                                                                            <!--end::Col-->
+                                                                        </div>
+                                                                        <!--end::Row-->
+                                                                    </div>
+                                                                    <!--end::Col-->
+                                                                </div>
+                                                                <!--end::Input group-->
+
+                                                                <!--begin::Input group-->
+                                                                <div class="row mb-6">
+                                                                    <!--begin::Label-->
+                                                                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Login</label>
+                                                                    <!--end::Label-->
+
+                                                                    <!--begin::Col-->
+                                                                    <div class="col-lg-8 fv-row">
+                                                                        <input type="text" name="login"
+                                                                               class="form-control form-control-lg form-control-solid"
+                                                                               value="{{ user.login }}">
+                                                                    </div>
+                                                                </div>
+
+                                                                <!--begin::Input group-->
+                                                                <div class="row mb-6">
+                                                                    <!--begin::Label-->
+                                                                    <label
+                                                                            class="col-lg-4 col-form-label fw-semibold fs-6">Date
+                                                                        de naissance</label>
+                                                                    <!--end::Label-->
+
+                                                                    <!--begin::Col-->
+                                                                    <div class="col-lg-8 fv-row">
+                                                                        <input type="date" name="naissance"
+                                                                               class="form-control form-control-lg form-control-solid">
+                                                                    </div>
+                                                                    <!--end::Col-->
+                                                                </div>
+                                                                <!--end::Input group-->
+
+                                                                <!--begin::Input group-->
+                                                                <div class="row mb-6">
+                                                                    <!--begin::Label-->
+                                                                    <label
+                                                                            class="col-lg-4 col-form-label fw-semibold fs-6">Numéro
+                                                                        de téléphone</label>
+                                                                    <!--end::Label-->
+
+                                                                    <!--begin::Col-->
+                                                                    <div class="col-lg-8 fv-row">
+                                                                        <input type="text" name="tel_perso"
+                                                                               pattern="[0-9]{9}"
+                                                                               class="form-control form-control-lg form-control-solid"
+                                                                               value="{{ user.tel_perso }}">
+                                                                    </div>
+                                                                    <!--end::Col-->
+                                                                </div>
+                                                                <!--end::Input group-->
+
+                                                                <!--begin::Input group-->
+                                                                <div class="row mb-6">
+                                                                    <!--begin::Label-->
+                                                                    <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                                                        <span>Adresse mail</span>
+                                                                    </label>
+                                                                    <!--end::Label-->
+
+                                                                    <!--begin::Col-->
+                                                                    <div class="col-lg-8 fv-row">
+                                                                        <input type="tel" name="email_perso"
+                                                                               class="form-control form-control-lg form-control-solid"
+                                                                               value="{{ user.email_perso }}">
+                                                                    </div>
+                                                                    <!--end::Col-->
+                                                                </div>
+                                                                <!--end::Input group-->
+
+                                                                <!--begin::Input group-->
+                                                                <div class="row mb-6">
+                                                                    <!--begin::Label-->
+                                                                    <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                                                        <span>Adresse</span>
+                                                                    </label>
+                                                                    <!--end::Label-->
+
+                                                                    <!--begin::Col-->
+                                                                    <div class="col-lg-8 fv-row">
+                                                                        <input type="tel" name="adresse_perso"
+                                                                               class="form-control form-control-lg form-control-solid"
+                                                                               value="{{ user.adresse_perso }}">
+                                                                    </div>
+                                                                    <!--end::Col-->
+                                                                </div>
+                                                                <!--end::Input group-->
+
+                                                            </div>
+                                                            <!--end::Card body-->
+
+                                                            <!--begin::Actions-->
+                                                            <div class="card-footer d-flex justify-content-end py-6 px-9">
+                                                                <button type="reset"
+                                                                        class="btn btn-light btn-active-light-primary me-2">
+                                                                    Effacer
+                                                                </button>
+                                                                <button type="submit" class="btn btn-primary"
+                                                                        id="kt_account_profile_details_submit">
+                                                                    Sauvegarder
+                                                                </button>
+                                                            </div>
+                                                            <!--end::Actions-->
+                                                        </div>
+                                                    </form>
+
+                                                    <!--end::Form-->
+                                                </div>
+                                                <!--end::Content-->
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <!--begin:::Tab content-->
+                                    <div class="tab-content profil-uga">
+                                        <!--begin:::Tab pane-->
+                                        <div class="tab-pane fade show active" role="tabpanel">
+                                            <!--end::Navbar-->
+                                            <!--begin::Basic info-->
+                                            <div class="card mb-5 mb-xl-10">
+                                                <!--begin::Card header-->
+                                                <div class="card-header border-0 cursor-pointer">
+                                                    <!--begin::Card title-->
+                                                    <div class="card-title m-0">
+                                                        <h3 class="fw-bold m-0">Details du Profil UGA</h3>
+                                                    </div>
+                                                    <!--end::Card title-->
+                                                </div>
+                                                <!--begin::Card header-->
+
+                                                <!--begin::Content-->
+                                                <div class="collapse show">
+                                                    <!--begin::Form-->
+                                                    <form method="POST"
+                                                          class="form">
+                                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                                        <!--begin::Card body-->
+                                                        <div class="card-body border-top p-9">
+                                                            <!--begin::Input group-->
+                                                            <div class="row mb-6">
+
+
+                                                                <!--end::Input group-->
+
+                                                                <!--begin::Input group-->
+                                                                <div class="row mb-6">
+                                                                    <!--begin::Label-->
+                                                                    <label
+                                                                            class="col-lg-4 col-form-label fw-semibold fs-6">Prenom
+                                                                        Nom</label>
+                                                                    <!--end::Label-->
+
+                                                                    <!--begin::Col-->
+                                                                    <div class="col-lg-8">
+                                                                        <!--begin::Row-->
+                                                                        <div class="row">
+                                                                            <!--begin::Col-->
+                                                                            <div class="col-lg-6 fv-row">
+                                                                                <input type="text" name="prenom"
+                                                                                       class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
+                                                                                       value="{{ user.prenom }}">
+                                                                            </div>
+                                                                            <!--end::Col-->
+
+                                                                            <!--begin::Col-->
+                                                                            <div class="col-lg-6 fv-row">
+                                                                                <input type="text" name="nom"
+                                                                                       class="form-control form-control-lg form-control-solid"
+                                                                                       value="{{ user.nom }}">
+                                                                            </div>
+                                                                            <!--end::Col-->
+                                                                        </div>
+                                                                        <!--end::Row-->
+                                                                    </div>
+                                                                    <!--end::Col-->
+                                                                </div>
+                                                                <!--end::Input group-->
+
+                                                                <!--begin::Input group-->
+                                                                <div class="row mb-6">
+                                                                    <!--begin::Label-->
+                                                                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Statut</label>
+                                                                    <!--end::Label-->
+
+                                                                    <!--begin::Col-->
+                                                                    <div class="col-lg-8 fv-row">
+                                                                        <select name="statut"
+                                                                                class="form-control form-control-lg form-control-solid"
+                                                                                style="margin-bottom: 1rem">
+                                                                            <option value="prof">Professeur</option>
+                                                                            <option value="doctoran">Doctoran</option>
+                                                                            <option value="mcf">Professeur</option>
+                                                                            <option value="prag">Professeur</option>
+                                                                            <option value="admin">Administrateur
+                                                                            </option>
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!--begin::Input group-->
+                                                                <div class="row mb-6">
+                                                                    <!--begin::Label-->
+                                                                    <label
+                                                                            class="col-lg-4 col-form-label fw-semibold fs-6">Adresse
+                                                                        mail UGA</label>
+                                                                    <!--end::Label-->
+
+                                                                    <!--begin::Col-->
+                                                                    <div class="col-lg-8 fv-row">
+                                                                        <input type="text" name="email_uga"
+                                                                               class="form-control form-control-lg form-control-solid"
+                                                                               value="{{ user.email_uga }}">
+                                                                    </div>
+                                                                    <!--end::Col-->
+                                                                    <!--end::Col-->
+                                                                </div>
+                                                                <!--end::Input group-->
+
+                                                                <!--begin::Input group-->
+                                                                <div class="row mb-6">
+                                                                    <!--begin::Label-->
+                                                                    <label
+                                                                            class="col-lg-4 col-form-label fw-semibold fs-6">Poste</label>
+                                                                    <!--end::Label-->
+
+                                                                    <!--begin::Col-->
+                                                                    <div class="col-lg-8 fv-row">
+                                                                        <a href="/Affectation"
+                                                                           class="form-control form-control-lg form-control-solid"
+                                                                        >{{ user_nbr.nbrposte }}</a>
+                                                                    </div>
+                                                                    <!--end::Col-->
+                                                                </div>
+                                                                <!--end::Input group-->
+
+
+                                                                {% for user in user_info %}
+                                                                    <!--begin::Input group-->
+                                                                    <div class="row mb-6">
+                                                                        <!--begin::Label-->
+                                                                        <label
+                                                                                class="col-lg-4 col-form-label fw-semibold fs-6">{{ user.poste }}</label>
+                                                                        <!--end::Label-->
+
+                                                                        <!--begin::Col-->
+                                                                        <div class="col-lg-8 fv-row">
+                                                                            <a href="/Affectation"
+                                                                               class="form-control form-control-lg form-control-solid">{{ user.tempstravail }}
+                                                                                %</a>
+                                                                        </div>
+                                                                        <!--end::Col-->
+                                                                    </div>
+                                                                    <!--end::Input group-->
+                                                                {% endfor %}
+
+                                                            </div>
+                                                            <!--end::Card body-->
+
+                                                            <!--begin::Actions-->
+                                                            <div class="card-footer d-flex justify-content-end py-6 px-9">
+                                                                <button type="reset"
+                                                                        class="btn btn-light btn-active-light-primary me-2">
+                                                                    Effacer
+                                                                </button>
+                                                                <button type="submit" class="btn btn-primary">
+                                                                    Sauvegarder
+                                                                </button>
+                                                            </div>
+                                                            <!--end::Actions-->
+                                                        </div>
+                                                    </form>
+                                                    <!--end::Form-->
+                                                </div>
+                                                <!--end::Content-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end:::Main-->
+            </div>
+            <!--end::Wrapper-->
+        </div>
+        <!--end::Page-->
+    </div>
+    <!--end::App-->
+
+{% endblock %}

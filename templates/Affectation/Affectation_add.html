@@ -1,0 +1,431 @@
+{% extends 'layout.html' %}
+{% block title %}{{ super() }} - Index{% endblock %}
+
+
+{% block nav %}
+    <div class="cell shrink">
+        <img id="uga_png" src="{{ url_for('static', filename='images/uga.png') }}" alt="logo UGA">
+    </div>
+    <div class="cell auto list_nav">
+        <h5 id="nom_prenom">{{ user_co.prenom }} {{ user_co.nom }}</h5>
+
+        {% for page in nav %}
+            <a class="nav" href="/{{ page }}"><img src="{{ url_for('static', filename='images/'+page+'.svg') }}"
+                                                           alt="" width="23">{{ page }}
+            </a>
+        {% endfor %}
+    </div>
+
+    <a href="/logout" id="logout"><img src="{{ url_for('static', filename='images/logout.svg') }}" alt="Déconnexion" width="25">Déconnexion</a>
+
+{% endblock %}
+
+
+{% block main %}
+
+
+
+    <div id="kt_app_content" class="app-content  flex-column-fluid " style="margin-top: 10px;margin-left: 50px">
+
+        <!--begin::Content container-->
+        <div id="kt_app_content_container" class="app-container  container-fluid">
+            <div class="page-title d-flex align-items-center gap-1 me-3" data-kt-swapper="true"
+                 data-kt-swapper-mode="{default: 'prepend', lg: 'prepend'}"
+                 data-kt-swapper-parent="{default: '#kt_app_content_container', lg: '#kt_app_header_wrapper'}"
+                 style="margin-bottom: 30px">
+                <!--begin::Title-->
+                <span class="text-gray-900 fw-bolder fs-2x">
+                                Nouvelle affectation
+                            </span>
+                <!--end::Title-->
+
+
+                <!--begin::Breadcrumb-->
+                <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-base ms-3">
+
+
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-gray-700 fw-bold lh-1">
+                        <a href="/Compte" class="text-gray-700 text-hover-primary">
+                            <i class="ki-duotone ki-home fs-3 text-gray-400 ms-2"></i>
+                        </a>
+                    </li>
+                    <!--end::Item-->
+
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item">
+                        <i class="ki-duotone ki-right fs-4 text-gray-700 mx-n2"></i>
+                    </li>
+                    <!--end::Item-->
+
+
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-gray-700 fw-bold lh-1">
+                        Affectation
+                    </li>
+                    <!--end::Item-->
+
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item">
+                        <i class="ki-duotone ki-right fs-4 text-gray-700 mx-n2"></i>
+                    </li>
+                    <!--end::Item-->
+
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-gray-700 fw-bold lh-1">
+                        <a href="/Affectation">Postes</a>
+                    </li>
+                    <!--end::Item-->
+
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item">
+                        <i class="ki-duotone ki-right fs-4 text-gray-700 mx-n2"></i>
+                    </li>
+                    <!--end::Item-->
+
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-gray-500 text-ki">
+                        Ajouter
+                    </li>
+                    <!--end::Item-->
+
+
+                </ul>
+                <!--end::Breadcrumb-->
+            </div>
+
+
+            <!--begin::Navbar-->
+            <div class="card mb-5 mb-xl-10">
+                <div class="card-body pt-9 pb-0">
+                    <!--begin::Details-->
+                    <div class="d-flex flex-wrap flex-sm-nowrap mb-3">
+                        <!--begin: Pic-->
+                        <div class="me-7 mb-4">
+                            <div
+                                    class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
+                                <img src="{{ url_for('static', filename='images/user.svg') }}" alt="image">
+
+                            </div>
+                        </div>
+                        <!--end::Pic-->
+
+                        <!--begin::Info-->
+                        <div class="flex-grow-1">
+                            <!--begin::Title-->
+                            <div
+                                    class="d-flex justify-content-between align-items-start flex-wrap mb-2">
+                                <!--begin::User-->
+                                <div class="d-flex flex-column">
+                                    <!--begin::Name-->
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div
+                                           class="text-gray-900 text-hover-primary fs-2 fw-bold me-1">{{ user_aff.prenom }} {{ user_aff.nom }}</div>
+
+
+                                    </div>
+                                    <!--end::Name-->
+
+                                    <!--begin::Info-->
+                                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                                        <div
+                                           class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
+                                            <i class="ki-duotone ki-profile-circle fs-4 me-1"><i
+                                                    class="path1"></i></i>
+                                            <div class="text-ki info_bleu">{{ user_aff.role }}</div>
+                                        </div>
+                                        <div
+                                           class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2 info_bleu">
+                                            <i class="ki-duotone ki-sms fs-4 me-1"><i
+                                                    class="path1"></i></i>
+                                            <div class="text-ki info_bleu">{{ user_aff.email_perso }}</div>
+
+                                        </div>
+                                        <div
+                                           class="d-flex align-items-center text-gray-400 text-hover-primary mb-2 info_bleu">
+                                            <i class="ki-duotone ki-geolocation fs-4 me-1"><i
+                                                    class="path1"></i></i>
+                                            <div class="text-ki info_bleu">0{{ user_aff.tel_perso }}</div>
+
+                                        </div>
+                                    </div>
+                                    <!--end::Info-->
+                                </div>
+                                <!--end::User-->
+
+                                <!--begin::Actions-->
+
+                            </div>
+                            <!--end::Title-->
+
+                            <!--begin::Stats-->
+                            <div class="d-flex flex-wrap flex-stack">
+                                <!--begin::Wrapper-->
+                                <div class="d-flex flex-column flex-grow-1 pe-8">
+                                    <!--begin::Stats-->
+                                    <div class="d-flex flex-wrap">
+                                        <!--begin::Stat-->
+                                        <div
+                                                class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+                                            <!--begin::Number-->
+                                            <div class="d-flex align-items-center">
+                                                <i
+                                                        class="ki-duotone ki-poste fs-3 text-success me-2"><i
+                                                        class="path1"></i></i>
+                                                <div class="fs-2 fw-bold" data-kt-countup="true">{{ user_nbr.nbrposte }}
+                                                </div>
+                                            </div>
+                                            <!--end::Number-->
+
+                                            <!--begin::Label-->
+                                            <div class="fw-semibold fs-6 text-gray-400">Poste
+                                            </div>
+                                            <!--end::Label-->
+                                        </div>
+                                        <!--end::Stat-->
+                                        {% for user in user_info %}
+                                            <!--begin::Stat-->
+                                            <div
+                                                    class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+                                                <!--begin::Number-->
+                                                <div class="d-flex align-items-center">
+                                                    <i
+                                                            class="ki-duotone ki-work-time fs-3 text-danger me-2"><i
+                                                            class="path1"></i></i>
+                                                    <div class="fs-2 fw-bold">{{ user.tempstravail }}%
+                                                    </div>
+                                                </div>
+                                                <!--end::Number-->
+
+                                                <!--begin::Label-->
+                                                <div class="fw-semibold fs-6 text-gray-400">{{ user.poste }}
+                                                </div>
+                                                <!--end::Label-->
+                                            </div>
+                                        {% endfor %}
+                                        <!--end::Stat-->
+
+
+                                    </div>
+                                    <!--end::Stats-->
+                                </div>
+                                <!--end::Wrapper-->
+
+                                <!--begin::Progress-->
+
+                                <!--end::Progress-->
+                            </div>
+                            <!--end::Stats-->
+                        </div>
+                        <!--end::Info-->
+                    </div>
+                    <!--end::Details-->
+                </div>
+            </div>
+            <!--end::Navbar-->
+            <!--begin::Basic info-->
+            <div class="card mb-5 mb-xl-10">
+                <!--begin::Card header-->
+                <div class="card-header border-0 cursor-pointer" role="button"
+                     data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details"
+                     aria-expanded="true" aria-controls="kt_account_profile_details">
+                    <!--begin::Card title-->
+                    <div class="card-title m-0">
+                        <h3 class="fw-bold m-0">Profile Details</h3>
+                    </div>
+                    <!--end::Card title-->
+                </div>
+                <!--begin::Card header-->
+
+                <!--begin::Content-->
+                <div id="kt_account_settings_profile_details" class="collapse show">
+                    <!--begin::Form-->
+                    <form method="POST" id="kt_account_profile_details_form" class="form">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <!--begin::Card body-->
+                        <div class="card-body border-top p-9">
+                            <!--begin::Input group-->
+                            <div class="row mb-6">
+
+                                <!--begin::Input group-->
+                                <div class="row mb-6">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 col-form-label fw-semibold fs-6 required">Utilisateurs</label>
+                                    <!--end::Label-->
+
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <select class="form-control form-control-lg form-control-solid" required
+                                                onchange="location = this.value;"
+                                                style="margin-bottom: 1rem">
+                                            {% for personne in personnes %}
+                                                <option value="/Affectation/add/{{ personne.login }}"
+                                                        {% if personne.login == user_aff.login %}selected{% endif %}>{{ personne.prenom }} {{ personne.nom }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+
+                                </div>
+
+
+                                <!--begin::Input group-->
+                                <div class="row mb-6">
+                                    <!--begin::Label-->
+                                    <label
+                                            class="col-lg-4 col-form-label required fw-semibold fs-6">Poste</label>
+                                    <!--end::Label-->
+
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <select name="poste" required
+                                                class="form-control form-control-lg form-control-solid">
+                                            <option value="Enseignant">Enseignant</option>
+                                            <option value="Chercheur">Chercheur</option>
+                                            <option value="Technicien solutions de sécurité">Technicien solutions de
+                                                sécurité
+                                            </option>
+                                            <option value="Responsable des payes">Responsable des payes</option>
+                                            <option value="Ingénieur pédagotique">Ingénieur pédagotique</option>
+                                            <option value="Doctorant">Doctorant</option>
+                                        </select>
+
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+
+
+                                <!--begin::Input group-->
+                                <div class="row mb-6">
+                                    <!--begin::Label-->
+                                    <label
+                                            class="col-lg-4 col-form-label required fw-semibold fs-6">Service</label>
+                                    <!--end::Label-->
+
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <select name="service" required
+                                                class="form-control form-control-lg form-control-solid">
+                                            {% for service in services %}
+                                                <option value="{{ service.code }}">{{ service.nom }}</option>
+                                            {% endfor %}
+                                        </select>
+
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+
+                                <!--begin::Input group-->
+                                <div class="row mb-6">
+                                    <!--begin::Label-->
+                                    <label
+                                            class="col-lg-4 col-form-label required fw-semibold fs-6">Date de
+                                        début</label>
+                                    <!--end::Label-->
+
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <input type="date" name="debut" required
+                                               class="form-control form-control-lg form-control-solid"
+                                               placeholder="date de debut">
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+
+                                <!--begin::Input group-->
+                                <div class="row mb-6">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                        <span class="required">Date de fin</span>
+
+                                    </label>
+                                    <!--end::Label-->
+
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <input type="date" name="fin" required
+                                               class="form-control form-control-lg form-control-solid"
+                                               placeholder="date de fin">
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+
+
+                                <!--begin::Input group-->
+                                <div class="row mb-6">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                        <span class="required">Numéro de téléphone</span>
+                                    </label>
+                                    <!--end::Label-->
+
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <input type="tel" name="tel" required pattern="[0-9]{9}"
+                                               class="form-control form-control-lg form-control-solid"
+                                               placeholder="numéro de téléphone">
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+
+                                <!--begin::Input group-->
+                                <div class="row mb-6">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 col-form-label fw-semibold fs-6">
+                                        <span class="required">Temps de travail</span>
+                                    </label>
+                                    <!--end::Label-->
+
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <input type="text" name="tempstravail" required
+                                               class="form-control form-control-lg form-control-solid"
+                                               placeholder="temps de travail">
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+
+                                <!--begin::Input group-->
+                                <div class="row mb-6">
+                                    <!--begin::Label-->
+                                    <label class="col-lg-4 col-form-label fw-semibold fs-6">Numéro de sécu
+                                    </label>
+                                    <!--end::Label-->
+
+                                    <!--begin::Col-->
+                                    <div class="col-lg-8 fv-row">
+                                        <input type="text" name="secu" readonly
+                                               class="form-control form-control-lg form-control-solid"
+                                               placeholder="{{ user_aff.secu }}">
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+                            </div>
+                            <!--end::Card body-->
+
+                            <!--begin::Actions-->
+                            <div class="card-footer d-flex justify-content-end py-6 px-9">
+                                <button type="reset"
+                                        class="btn btn-light btn-active-light-primary me-2">Effacer
+                                </button>
+                                <button type="submit" class="btn btn-primary"
+                                        id="kt_account_profile_details_submit">Affecter a l'utilisateur
+                                </button>
+                            </div>
+                            <!--end::Actions-->
+                        </div>
+                    </form>
+                    <!--end::Form-->
+                </div>
+                <!--end::Content-->
+            </div>
+            <!--end::Basic info-->
+        </div>
+    </div>
+{% endblock %}
